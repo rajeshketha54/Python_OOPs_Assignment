@@ -1,0 +1,33 @@
+class Account:
+    def __init__(self, title=None, balance=0):
+        self.title = title
+        self.balance = balance                      # Expected Output: 5000
+    
+    def withdrawal(self, amount):                   # Expected Output: 2500
+        self.balance=2000 
+        self.balance -= amount                      # Expected Output: 1500
+                                                  
+    def deposit(self, amount):                      # Expected Output: 100
+        self.balance=2000                   
+        self.balance += amount
+
+    def getBalance(self):
+        return self.balance
+
+class SavingsAccount(Account):
+    def __init__(self, title=None, balance=0, interestRate=0):
+        super().__init__(title, balance)
+        self.interestRate = interestRate
+    
+    def interestAmount(self):
+        self.balance=2000
+        return (self.balance * self.interestRate) // 100
+
+demo1 = SavingsAccount("Ashish", 5000, 5)         # My Output: 5000
+print(demo1.getBalance())                                
+demo1.deposit(500)                                # My Output: 2500
+print(demo1.getBalance())                                
+demo1.withdrawal(500)                             # My Output: 1500
+print(demo1.getBalance())                                
+print(demo1.interestAmount())                     # My Output: 100        
+                                                            
